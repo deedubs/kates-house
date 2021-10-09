@@ -9,7 +9,17 @@ tasks:
       - kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
       - kubectl create ns istio-system
       - kubectl apply -f deploy/istio.yaml
+      - kubectl label namespace default istio-injection=enabled --overwrite
   
+  knative-serving:
+    cmds:
+      - kubectl apply -f https://github.com/knative/serving/releases/download/v0.26.0/serving-crds.yaml
+      - kubectl apply -f https://github.com/knative/serving/releases/download/v0.26.0/serving-core.yaml
+
+      - kubectl apply -f https://github.com/knative/net-istio/releases/download/v0.26.0/net-istio.yaml
+
+
+
   destroy:
     cmds:
       - kind delete cluster --name kates-home
