@@ -6,6 +6,7 @@ networking:
   apiServerAddress: "127.0.0.1"
   apiServerPort: 6443
   disableDefaultCNI: true
+  podSubnet: 192.168.0.0/16 
 
 nodes:
   - role: control-plane

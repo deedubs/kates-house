@@ -1,0 +1,15 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  init:
+    cmds:
+      - kind create cluster --config=deploy/kind-cluster.yaml
+      - kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+      - kubectl create ns istio-system
+      - kubectl apply -f deploy/istio.yaml
+  
+  destroy:
+    cmds:
+      - kind delete cluster --name kates-home
