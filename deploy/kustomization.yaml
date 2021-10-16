@@ -1,0 +1,6 @@
+resources:
+  - components/calico
+  - components/istio
+  - components/knative-operator
+
+  - resources/namespace.yaml
