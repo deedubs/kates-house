@@ -1,0 +1,8 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - docker build -t deedubs/temperature-sensor .
+      - kind load docker-image deedubs/temperature-sensor --name kates-home
+      - kubectl delete pod -l 'app=temperature-sensor'
