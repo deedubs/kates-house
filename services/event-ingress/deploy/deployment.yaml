@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-ingress
+spec:
+  selector:
+    matchLabels:
+      app: event-ingress
+  template:
+    metadata:
+      labels:
+        app: event-ingress
+    spec:
+      containers:
+      - name: event-ingress
+        image: kates/event-ingress
+        imagePullPolicy: IfNotPresent 
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - name: http
+            containerPort: 8080

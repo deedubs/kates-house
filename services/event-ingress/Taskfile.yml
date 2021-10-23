@@ -1,0 +1,9 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - docker build -t docker.io/deedubs/event-ingress .
+      - kind load docker-image docker.io/deedubs/event-ingress --name kates-home
+      - docker push docker.io/deedubs/event-ingress
+      - kubectl delete pod -l "service.istio.io/canonical-name=event-ingress"
